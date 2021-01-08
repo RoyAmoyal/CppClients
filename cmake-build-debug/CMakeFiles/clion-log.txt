@@ -1,0 +1,11 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/royamoyal/CLionProjects/Assignment3-Client
+CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:164 (message):
+  Could NOT find Boost (missing: Boost_INCLUDE_DIR system filesystem)
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake:445 (_FPHSA_FAILURE_MESSAGE)
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake:2166 (find_package_handle_standard_args)
+  CMakeLists.txt:9 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/royamoyal/CLionProjects/Assignment3-Client/cmake-build-debug/CMakeFiles/CMakeOutput.log".

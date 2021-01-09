@@ -35,15 +35,19 @@ void ServerToClient::run() {
             if (op2 == 6 || op2 == 7 || op2 == 8 || op2 == 9 || op2 == 11){
                     string serverMessage;
                     connectionHandler->getFrameAscii(serverMessage, '\0');
-                    cout << "\n" + serverMessage << endl;
+                    cout << ans << endl;
+                    cout << serverMessage << endl;
                 }
             else if (op2 == 4){
+                cout << ans << endl;
                 toTerminate =   true;
+            }else{
+                //IF its empty string we need to pull the zeroByte
+                string empty;
+                connectionHandler->getLine(empty);
+                cout << ans << endl;
             }
-            //IF ITs empty string we need to pull the zerobyte
-            string empty;
-            connectionHandler->getLine(empty);
-            cout << ans << endl;
+
         }
         else if(op == 13){
             ans = "ERROR";

@@ -48,7 +48,7 @@ void ClientToServer::run() {
         }else if(splitted[0] == "LOGIN"){
             string userName(splitted[1]);
             string password(splitted[2]);
-            shortToBytes(2, opCode);
+            shortToBytes(3, opCode);
             connectionHandler->sendBytes(opCode, 2);
             connectionHandler->sendLine(userName);
             connectionHandler->sendLine(password);

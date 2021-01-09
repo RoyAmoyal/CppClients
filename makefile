@@ -1,32 +1,26 @@
-BOOST = -lboost_system -lpthread
+CFLAGS:=-c -Wall -Weffc++ -g -std=c++11 -Iinclude
+LDFLAGS:=-lboost_system -lboost_thread -lpthread
 
-# All Targets
-all: Assignment3-Client
+all: Client
+	g++ -o bin/Client bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/Client.o $(LDFLAGS)
 
-# Tool invocations
-Assignment3-Client: bin/ConnectionHandler.o bin/Client.o bin/ClientToServer.o bin/ServerToClient.o $(BOOST)
-	@echo 'Building target: BGSclient'
-	@echo 'Invoking: C++ Linker'
-	g++ -o Bin/Assignment3-Client bin/Client.o bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o $(BOOST)
-	@echo 'Finished building target: BGSclient'
-	@echo ' '
+Client: bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/Client.o
+
+bin/ConnectionHandler.o: src/ConnectionHandler.cpp
+	g++ $(CFLAGS) -o bin/ConnectionHandler.o src/ConnectionHandler.cpp
+
+
+bin/ClientToServer.o: src/ClientToServer.cpp
+	g++ $(CFLAGS) -o bin/ClientToServer.o src/ClientToServer.cpp
+
+
+bin/ServerToClient.o: src/ServerToClient.cpp
+	g++ $(CFLAGS) -o bin/ServerToClient.o src/ServerToClient.cpp
 
 
 bin/Client.o: src/Client.cpp
-	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Client.o src/Client.cpp
+	g++ $(CFLAGS) -o bin/Client.o src/Client.cpp
 
-bin/ConnectionHandler.o: src/ConnectionHandler.cpp
-	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/ConnectionHandler.o src/ConnectionHandler.cpp
-
-bin/ClientToServer.o: src/ClientToServer.cpp.cpp.cpp
-	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/ClientToServer.o src/ClientToServer.cpp
-
-bin/ServerToClient.o: src/ServerToClient.cpp.cpp
-	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/ServerToClient.o src/ServerToClient.cpp
-
-
-#Clean the build directory
+.PHONY: clean
 clean:
 	rm -f bin/*
-
-

@@ -11,7 +11,8 @@
 using namespace std;
 
 
-ClientToServer::ClientToServer(ConnectionHandler *connectionHandler, condition_variable &cv ,mutex &mutex) : connectionHandler(connectionHandler), toTerminate(false), cv(cv) ,mutex1(mutex) {
+ClientToServer::ClientToServer(ConnectionHandler *connectionHandler, condition_variable &cv ,mutex &mutex) :
+connectionHandler(connectionHandler), cv(cv) ,mutex1(mutex),toTerminate(false) {
 }
 
 
@@ -47,7 +48,7 @@ void ClientToServer::run() {
         }else if(splitted[0] == "LOGIN"){
             string userName(splitted[1]);
             string password(splitted[2]);
-            shortToBytes(3, opCode);
+            shortToBytes(2, opCode);
             connectionHandler->sendBytes(opCode, 2);
             connectionHandler->sendLine(userName);
             connectionHandler->sendLine(password);
@@ -65,9 +66,10 @@ void ClientToServer::run() {
 
                 //sends the courseNum
                 int intCourseNum = stoi(splitted[1]);
-                short courseNum = (short) intCourseNum;
+                short courseNum = (short)intCourseNum;
                 char bytesShortNum[2];
-                connectionHandler->sendBytes(courseNum , 2);
+                shortToBytes(courseNum,bytesShortNum);
+                connectionHandler->sendBytes(bytesShortNum , 2);
 
          }
         else if (splitted[0] == "KDAMCHECK"){
@@ -77,9 +79,10 @@ void ClientToServer::run() {
 
             //sends the courseNum
             int intCourseNum = stoi(splitted[1]);
-            short courseNum = (short) intCourseNum;
+            short courseNum = (short)intCourseNum;
             char bytesShortNum[2];
-            connectionHandler->sendBytes(courseNum , 2);
+            shortToBytes(courseNum,bytesShortNum);
+            connectionHandler->sendBytes(bytesShortNum , 2);
 
         }
         else if (splitted[0] == "COURSESTAT"){
@@ -89,9 +92,10 @@ void ClientToServer::run() {
 
             //sends the courseNum
             int intCourseNum = stoi(splitted[1]);
-            short courseNum = (short) intCourseNum;
+            short courseNum = (short)intCourseNum;
             char bytesShortNum[2];
-            connectionHandler->sendBytes(courseNum , 2);
+            shortToBytes(courseNum,bytesShortNum);
+            connectionHandler->sendBytes(bytesShortNum , 2);
 
         }
         else if (splitted[0] == "STUDENTSTAT") {
@@ -103,28 +107,29 @@ void ClientToServer::run() {
             string userName(splitted[1]);
             connectionHandler->sendLine(userName);
         }
-        }
         else if (splitted[0] == "ISREGISTERED"){
         //sends the opCode
-                shortToBytes(9, opCode);
+        shortToBytes(9, opCode);
              connectionHandler->sendBytes(opCode, 2);
 
-         //sends the courseNum
-             int intCourseNum = stoi(splitted[1]);
-             short courseNum = (short) intCourseNum;
-             char bytesShortNum[2];
-             connectionHandler->sendBytes(courseNum , 2);
+        //sends the courseNum
+        int intCourseNum = stoi(splitted[1]);
+        short courseNum = (short)intCourseNum;
+        char bytesShortNum[2];
+        shortToBytes(courseNum,bytesShortNum);
+        connectionHandler->sendBytes(bytesShortNum , 2);
         }
         else if (splitted[0] == "UNREGISTER"){
         //sends the opCode
         shortToBytes(10, opCode);
         connectionHandler->sendBytes(opCode, 2);
 
-        //sends the courseNum
-        int intCourseNum = stoi(splitted[1]);
-        short courseNum = (short) intCourseNum;
-        char bytesShortNum[2];
-        connectionHandler->sendBytes(courseNum , 2);
+            //sends the courseNum
+            int intCourseNum = stoi(splitted[1]);
+            short courseNum = (short)intCourseNum;
+            char bytesShortNum[2];
+            shortToBytes(courseNum,bytesShortNum);
+            connectionHandler->sendBytes(bytesShortNum , 2);
     }
     else if (splitted[0] == "MYCOURSES"){
         //sends the opCode
@@ -134,7 +139,7 @@ void ClientToServer::run() {
 
         }
     }
-}
+
 
 void ClientToServer::shortToBytes(short num, char* bytesArr) {
     bytesArr[0] = ((num >> 8) & 0xFF);

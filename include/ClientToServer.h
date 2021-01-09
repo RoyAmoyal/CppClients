@@ -16,9 +16,9 @@ using namespace std;
 class ClientToServer {
 private:
     ConnectionHandler *connectionHandler;
-    bool toTerminate;
-    mutex &mutex1;
     condition_variable &cv;
+    mutex &mutex1;
+    bool toTerminate;
 
 public:
     ClientToServer(ConnectionHandler *connectionHandler,condition_variable &cv ,mutex &mutex1);    //constructor

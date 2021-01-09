@@ -7,7 +7,8 @@
 #include "ServerToClient.h"
 using namespace std;
 
-ServerToClient::ServerToClient(ConnectionHandler *connectionHandler, condition_variable &cv ,mutex &mutex) : connectionHandler(connectionHandler), toTerminate(false),cv(cv) ,mutex1(mutex) {
+ServerToClient::ServerToClient(ConnectionHandler *connectionHandler, condition_variable &cv ,mutex &mutex):
+connectionHandler(connectionHandler) ,cv(cv) ,mutex1(mutex), toTerminate(false) {
 
 }
 
@@ -24,9 +25,7 @@ void ServerToClient::run() {
         string ans;
         if(op == 12){
             ans = "ACK";
-
             char opCode2[2];
-
             //gets the second opcode from user and converting it to short
             connectionHandler->getBytes(opCode2, 2);
             short op2 = bytesToShort(opCode2);
@@ -38,15 +37,15 @@ void ServerToClient::run() {
                     connectionHandler->getFrameAscii(serverMessage, '\0');
                     cout << "\n" + serverMessage << endl;
                 }
-            }
-
             else if (op2 == 4){
                 toTerminate =   true;
             }
+            //IF ITs empty string we need to pull the zerobyte
+            string empty;
+            connectionHandler->getLine(empty);
             cout << ans << endl;
         }
-
-        else if(op == 11){
+        else if(op == 13){
             ans = "ERROR";
             //gets opcode from user and converting it to short
             char opCode2[2];

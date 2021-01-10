@@ -22,7 +22,7 @@ void ClientToServer::run() {
         char buf[bufsize];
         cin.getline(buf, bufsize);
         string line(buf);
-        int len = line.length();
+
         vector<string> splitted;
 
         boost::split(splitted, line, boost::is_any_of(" "));

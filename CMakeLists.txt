@@ -12,7 +12,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}-std=c++11 -pthread -lboost_thread")
 add_executable(Client
         include/ConnectionHandler.h
         src/ConnectionHandler.cpp
-        src/ServerToClient.cpp include/ServerToClient.h src/ClientToServer.cpp include/ClientToServer.h src/Client.cpp)
+        src/ServerToClient.cpp include/ServerToClient.h src/ClientToServer.cpp include/ClientToServer.h src/BGRSclient.cpp)
 
 
 target_link_libraries(Client ${Boost_LIBRARIES})

@@ -143,32 +143,32 @@ Client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
-src/Client.o: src/Client.cpp.o
+src/BGRSclient.o: src/BGRSclient.cpp.o
 
-.PHONY : src/Client.o
+.PHONY : src/BGRSclient.o
 
 # target to build an object file
-src/Client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.o
-.PHONY : src/Client.cpp.o
+src/BGRSclient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.o
+.PHONY : src/BGRSclient.cpp.o
 
-src/Client.i: src/Client.cpp.i
+src/BGRSclient.i: src/BGRSclient.cpp.i
 
-.PHONY : src/Client.i
+.PHONY : src/BGRSclient.i
 
 # target to preprocess a source file
-src/Client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.i
-.PHONY : src/Client.cpp.i
+src/BGRSclient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.i
+.PHONY : src/BGRSclient.cpp.i
 
-src/Client.s: src/Client.cpp.s
+src/BGRSclient.s: src/BGRSclient.cpp.s
 
-.PHONY : src/Client.s
+.PHONY : src/BGRSclient.s
 
 # target to generate assembly for a file
-src/Client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/Client.cpp.s
-.PHONY : src/Client.cpp.s
+src/BGRSclient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/src/BGRSclient.cpp.s
+.PHONY : src/BGRSclient.cpp.s
 
 src/ClientToServer.o: src/ClientToServer.cpp.o
 
@@ -260,9 +260,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Client"
-	@echo "... src/Client.o"
-	@echo "... src/Client.i"
-	@echo "... src/Client.s"
+	@echo "... src/BGRSclient.o"
+	@echo "... src/BGRSclient.i"
+	@echo "... src/BGRSclient.s"
 	@echo "... src/ClientToServer.o"
 	@echo "... src/ClientToServer.i"
 	@echo "... src/ClientToServer.s"

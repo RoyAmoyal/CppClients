@@ -1,10 +1,10 @@
 CFLAGS:=-c -Wall -Weffc++ -g -std=c++11 -Iinclude
 LDFLAGS:=-lboost_system -lboost_thread -lpthread
 
-all: Client
-	g++ -o bin/Client bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/Client.o $(LDFLAGS)
+all: BGRSclient
+	g++ -o bin/BGRSclient bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/BGRSclient.o $(LDFLAGS)
 
-Client: bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/Client.o
+BGRSclient: bin/ConnectionHandler.o bin/ClientToServer.o bin/ServerToClient.o bin/BGRSclient.o
 
 bin/ConnectionHandler.o: src/ConnectionHandler.cpp
 	g++ $(CFLAGS) -o bin/ConnectionHandler.o src/ConnectionHandler.cpp
@@ -18,8 +18,8 @@ bin/ServerToClient.o: src/ServerToClient.cpp
 	g++ $(CFLAGS) -o bin/ServerToClient.o src/ServerToClient.cpp
 
 
-bin/Client.o: src/Client.cpp
-	g++ $(CFLAGS) -o bin/Client.o src/Client.cpp
+bin/BGRSclient.o: src/BGRSclient.cpp
+	g++ $(CFLAGS) -o bin/BGRSclient.o src/BGRSclient.cpp
 
 .PHONY: clean
 clean:

@@ -1,9 +1,8 @@
 
-
 #include <stdlib.h>
-#include <ConnectionHandler.h>
-#include <ClientToServer.h>
-#include <ServerToClient.h>
+#include "../include/ConnectionHandler.h"
+#include "../include/ClientToServer.h"
+#include "../include/ServerToClient.h"
 #include <thread>
 
 using namespace std;

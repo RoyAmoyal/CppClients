@@ -1,7 +1,5 @@
 
-#include <ServerToClient.h>
-
-#include "ServerToClient.h"
+#include "../include/ServerToClient.h"
 using namespace std;
 
 ServerToClient::ServerToClient(ConnectionHandler *connectionHandler, condition_variable &cv ,mutex &mutex):

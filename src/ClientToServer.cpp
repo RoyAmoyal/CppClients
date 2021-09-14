@@ -1,8 +1,7 @@
 
-#include <ClientToServer.h>
-#include <ConnectionHandler.h>
+#include "../include/ConnectionHandler.h"
+#include "../include/ClientToServer.h"
 
-#include "ClientToServer.h"
 #include <boost/algorithm/string.hpp>
 
 using namespace std;
